@@ -1,0 +1,49 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model StudentViewModel
+
+<div class="container">
+    <h1>Adding Student</h1>
+
+    <form method="post">
+        <div class="m-1">
+            <label class="form-label" asp-for="Student.FirstName">First Name</label>
+            <input class="form-control" asp-for="Student.FirstName" />
+        </div>
+
+        <div class="m-1">
+            <label class="form-label" asp-for="Student.LastName">Last Name</label>
+            <input class="form-control" asp-for="Student.LastName" />
+        </div>
+
+        <div class="m-1">
+            <label class="form-label" asp-for="Student.Age">Age</label>
+            <input class="form-control" type="number" asp-for="Student.Age" />
+        </div>
+
+        <div class="m-1">
+            <label class="form-label" asp-for="Student.GroupId">Group</label>
+            <select class="form-select" asp-for="Student.GroupId">
+                @foreach (Group group in Model.Groups)
+                {
+                    @if (group.Id == Model.Student.GroupId)
+                    {
+                        <option value="@group.Id" selected>@group</option>
+                    }
+                    else
+                    {
+                        <option value="@group.Id">@group</option>
+                    }
+                }
+            </select>
+        </div>
+
+        <div class="m-1">
+            <button class="btn btn-primary">Add</button>
+        </div>
+    </form>
+</div>
